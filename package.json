@@ -1,0 +1,25 @@
+{
+  "name": "wind-site-intelligence",
+  "private": true,
+  "description": "Score and visualise wind turbine site suitability",
+  "author": "Jamie Blair <jamie@jamieblair.co.uk>",
+  "license": "MIT",
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "format": "turbo format",
+    "check": "turbo check"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.9",
+    "tsx": "^4.21.0",
+    "turbo": "^2.8.21",
+    "typescript": "^5.7.3"
+  }
+}
