@@ -379,28 +379,28 @@ All default data comes from **free, publicly accessible APIs**. No paid keys req
 |  DEFAULT (free, no key needed)                   |
 |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~              |
 |  NASA POWER -----> Wind speed/direction          |
-|                    2m, 10m, 50m heights           |
-|                    1981 to present                |
-|                    Monthly / Daily / Hourly       |
+|                    2m, 10m, 50m heights          |
+|                    1981 to present               |
+|                    Monthly / Daily / Hourly      |
 |                                                  |
 |  Open-Elevation -> Terrain elevation             |
-|                    Slope, aspect, roughness       |
+|                    Slope, aspect, roughness      |
 |                                                  |
 |  OSM Overpass ---> Grid infrastructure           |
-|                    Land use, roads, turbines      |
+|                    Land use, roads, turbines     |
 |                                                  |
 |  OSM Nominatim --> Reverse geocoding             |
-|                    Country, region context        |
+|                    Country, region context       |
 |                                                  |
 |  OPTIONAL (free registration, higher resolution) |
 |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~              |
 |  ERA5 -----------> Global reanalysis, 31km       |
-|                    100m + 10m wind, hourly        |
-|                    (CDS API key required)         |
+|                    100m + 10m wind, hourly       |
+|                    (CDS API key required)        |
 |                                                  |
 |  CERRA ----------> European reanalysis, 5.5km    |
-|                    High-res for European sites    |
-|                    (CDS API key required)         |
+|                    High-res for European sites   |
+|                    (CDS API key required)        |
 |                                                  |
 +--------------------------------------------------+
 ```
