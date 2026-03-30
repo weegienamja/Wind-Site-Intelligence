@@ -1,7 +1,7 @@
 {
-  "name": "@jamieblair/wind-site-intelligence",
-  "version": "0.1.0",
-  "description": "React components for wind turbine site suitability analysis",
+  "name": "@jamieblair/windforge",
+  "version": "0.3.0",
+  "description": "React components for wind energy site assessment and visualisation",
   "author": "Jamie Blair <jamie@jamieblair.co.uk>",
   "license": "MIT",
   "type": "module",
@@ -29,7 +29,7 @@
     "prepublishOnly": "pnpm test && pnpm build"
   },
   "dependencies": {
-    "@jamieblair/wind-site-intelligence-core": "workspace:*",
+    "@jamieblair/windforge-core": "workspace:*",
     "html2canvas": "^1.4.1",
     "jspdf": "^4.2.1",
     "leaflet": "^1.9.4",

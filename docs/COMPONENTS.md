@@ -1,6 +1,6 @@
 # Components
 
-UI components from `@jamieblair/wind-site-intelligence`.
+UI components from `@jamieblair/windforge`.
 
 All components accept `className` for external styling. Chart components accept `width` and `height` props. All handle empty/missing data gracefully.
 
@@ -11,7 +11,7 @@ All components accept `className` for external styling. Chart components accept 
 Top-level orchestrator. Renders map, coordinate inputs, weight sliders, and score card.
 
 ```tsx
-import { WindSiteScorer } from '@jamieblair/wind-site-intelligence';
+import { WindSiteScorer } from '@jamieblair/windforge';
 
 <WindSiteScorer
   defaultCenter={{ lat: 55.86, lng: -4.25 }}
@@ -40,7 +40,7 @@ import { WindSiteScorer } from '@jamieblair/wind-site-intelligence';
 Interactive Leaflet map with click-to-analyse and optional heatmap overlay.
 
 ```tsx
-import { SiteMap } from '@jamieblair/wind-site-intelligence';
+import { SiteMap } from '@jamieblair/windforge';
 
 <SiteMap
   center={{ lat: 55.86, lng: -4.25 }}
@@ -96,7 +96,7 @@ Adjustable sliders for scoring weights with real-time normalisation.
 Side-by-side comparison of 2-4 analysed sites with per-factor breakdown.
 
 ```tsx
-import { ScenarioCompare } from '@jamieblair/wind-site-intelligence';
+import { ScenarioCompare } from '@jamieblair/windforge';
 
 <ScenarioCompare sites={[analysis1, analysis2]} />
 ```
@@ -114,7 +114,7 @@ import { ScenarioCompare } from '@jamieblair/wind-site-intelligence';
 Generates a PDF report of the analysis with optional chart capture.
 
 ```tsx
-import { ExportButton } from '@jamieblair/wind-site-intelligence';
+import { ExportButton } from '@jamieblair/windforge';
 
 <ExportButton
   analysis={analysis}
@@ -151,7 +151,7 @@ import { ExportButton } from '@jamieblair/wind-site-intelligence';
 Line chart showing monthly wind speed trend with linear regression overlay.
 
 ```tsx
-import { WindTrendChart } from '@jamieblair/wind-site-intelligence';
+import { WindTrendChart } from '@jamieblair/windforge';
 
 <WindTrendChart data={trendData} height={300} />
 ```

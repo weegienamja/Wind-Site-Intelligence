@@ -11,7 +11,7 @@ import {
   Legend,
   ErrorBar,
 } from 'recharts';
-import type { BoxPlotData } from '@jamieblair/wind-site-intelligence-core';
+import type { BoxPlotData } from '@jamieblair/windforge-core';
 import type { WindSiteTheme } from '../styles/theme.js';
 
 export interface MonthlyBoxPlotProps {

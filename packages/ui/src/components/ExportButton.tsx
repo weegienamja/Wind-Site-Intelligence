@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import React, { useState, useCallback, useRef } from 'react';
-import type { SiteAnalysis } from '@jamieblair/wind-site-intelligence-core';
+import type { SiteAnalysis } from '@jamieblair/windforge-core';
 import type { WindSiteTheme } from '../styles/theme.js';
 
 export interface ExportButtonProps {

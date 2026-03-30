@@ -1,4 +1,4 @@
-// Public API surface for @jamieblair/wind-site-intelligence
+// Public API surface for @jamieblair/windforge
 
 // ─── Components ───
 

@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
-import type { WindDataSummary, LatLng, ScoringError } from '@jamieblair/wind-site-intelligence-core';
-import { fetchWindData } from '@jamieblair/wind-site-intelligence-core';
-import type { Result } from '@jamieblair/wind-site-intelligence-core';
+import type { WindDataSummary, LatLng, ScoringError } from '@jamieblair/windforge-core';
+import { fetchWindData } from '@jamieblair/windforge-core';
+import type { Result } from '@jamieblair/windforge-core';
 
 interface UseWindDataState {
   windData: WindDataSummary | null;

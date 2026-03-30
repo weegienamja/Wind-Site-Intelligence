@@ -46,6 +46,7 @@ const TURBINE_LIBRARY: TurbineModel[] = [
     ratedSpeedMs: 16.0,
     cutOutSpeedMs: 25.0,
     powerCurve: generatePowerCurve(4.0, 16.0, 25.0, 660),
+    soundPowerLevelDba: 98.0,
   },
   {
     id: 'enercon-e44-900',
@@ -58,6 +59,7 @@ const TURBINE_LIBRARY: TurbineModel[] = [
     ratedSpeedMs: 16.5,
     cutOutSpeedMs: 25.0,
     powerCurve: generatePowerCurve(3.0, 16.5, 25.0, 900),
+    soundPowerLevelDba: 99.0,
   },
 
   // --- Medium class (2-3 MW) ---
@@ -72,6 +74,7 @@ const TURBINE_LIBRARY: TurbineModel[] = [
     ratedSpeedMs: 12.0,
     cutOutSpeedMs: 25.0,
     powerCurve: generatePowerCurve(4.0, 12.0, 25.0, 2000),
+    soundPowerLevelDba: 103.5,
   },
   {
     id: 'vestas-v110-2000',
@@ -84,6 +87,7 @@ const TURBINE_LIBRARY: TurbineModel[] = [
     ratedSpeedMs: 11.5,
     cutOutSpeedMs: 25.0,
     powerCurve: generatePowerCurve(3.0, 11.5, 25.0, 2000),
+    soundPowerLevelDba: 104.5,
   },
   {
     id: 'siemens-swt-2.3-108',
@@ -96,6 +100,7 @@ const TURBINE_LIBRARY: TurbineModel[] = [
     ratedSpeedMs: 12.0,
     cutOutSpeedMs: 25.0,
     powerCurve: generatePowerCurve(3.5, 12.0, 25.0, 2300),
+    soundPowerLevelDba: 104.0,
   },
   {
     id: 'nordex-n117-3000',
@@ -108,6 +113,7 @@ const TURBINE_LIBRARY: TurbineModel[] = [
     ratedSpeedMs: 12.5,
     cutOutSpeedMs: 25.0,
     powerCurve: generatePowerCurve(3.0, 12.5, 25.0, 3000),
+    soundPowerLevelDba: 104.0,
   },
 
   // --- Large class (4-6 MW) ---
@@ -122,6 +128,7 @@ const TURBINE_LIBRARY: TurbineModel[] = [
     ratedSpeedMs: 12.0,
     cutOutSpeedMs: 22.5,
     powerCurve: generatePowerCurve(3.0, 12.0, 22.5, 4200),
+    soundPowerLevelDba: 105.0,
   },
   {
     id: 'siemens-gamesa-sg-5.8-170',
@@ -134,6 +141,7 @@ const TURBINE_LIBRARY: TurbineModel[] = [
     ratedSpeedMs: 12.0,
     cutOutSpeedMs: 25.0,
     powerCurve: generatePowerCurve(3.0, 12.0, 25.0, 5800),
+    soundPowerLevelDba: 106.0,
   },
   {
     id: 'ge-cypress-5.3-158',
@@ -146,6 +154,7 @@ const TURBINE_LIBRARY: TurbineModel[] = [
     ratedSpeedMs: 12.5,
     cutOutSpeedMs: 25.0,
     powerCurve: generatePowerCurve(3.0, 12.5, 25.0, 5300),
+    soundPowerLevelDba: 106.5,
   },
   {
     id: 'enercon-e138-4200',
@@ -158,6 +167,7 @@ const TURBINE_LIBRARY: TurbineModel[] = [
     ratedSpeedMs: 13.0,
     cutOutSpeedMs: 25.0,
     powerCurve: generatePowerCurve(2.5, 13.0, 25.0, 4200),
+    soundPowerLevelDba: 106.0,
   },
 
   // --- Extra large class (7+ MW) ---
@@ -172,6 +182,7 @@ const TURBINE_LIBRARY: TurbineModel[] = [
     ratedSpeedMs: 11.0,
     cutOutSpeedMs: 25.0,
     powerCurve: generatePowerCurve(3.0, 11.0, 25.0, 7200),
+    soundPowerLevelDba: 107.0,
   },
   {
     id: 'siemens-gamesa-sg-7.0-170',
@@ -184,6 +195,7 @@ const TURBINE_LIBRARY: TurbineModel[] = [
     ratedSpeedMs: 11.5,
     cutOutSpeedMs: 25.0,
     powerCurve: generatePowerCurve(3.0, 11.5, 25.0, 7000),
+    soundPowerLevelDba: 106.5,
   },
 ];
 

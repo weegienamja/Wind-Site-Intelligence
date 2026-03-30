@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import React, { useState, useCallback, useEffect } from 'react';
-import type { LatLng, ScoringWeights, SiteAnalysis } from '@jamieblair/wind-site-intelligence-core';
-import { DEFAULT_WEIGHTS } from '@jamieblair/wind-site-intelligence-core';
+import type { LatLng, ScoringWeights, SiteAnalysis } from '@jamieblair/windforge-core';
+import { DEFAULT_WEIGHTS } from '@jamieblair/windforge-core';
 import { useSiteScore } from '../hooks/use-site-score.js';
 import { useMapInteraction } from '../hooks/use-map-interaction.js';
 import { ScoreCard } from './ScoreCard.js';

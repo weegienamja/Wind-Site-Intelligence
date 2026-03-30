@@ -1,5 +1,7 @@
 export enum ScoringErrorCode {
   DataFetchFailed = 'DATA_FETCH_FAILED',
+  DataUnavailable = 'DATA_UNAVAILABLE',
+  InsufficientData = 'INSUFFICIENT_DATA',
   InvalidCoordinate = 'INVALID_COORDINATE',
   InvalidWeights = 'INVALID_WEIGHTS',
   Timeout = 'TIMEOUT',

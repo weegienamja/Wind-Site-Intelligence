@@ -54,11 +54,11 @@ jobs:
       - run: pnpm build
 
       - name: Publish core package
-        run: pnpm --filter @jamieblair/wind-site-intelligence-core publish --no-git-checks --access public
+        run: pnpm --filter @jamieblair/windforge-core publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish UI package
-        run: pnpm --filter @jamieblair/wind-site-intelligence publish --no-git-checks --access public
+        run: pnpm --filter @jamieblair/windforge publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

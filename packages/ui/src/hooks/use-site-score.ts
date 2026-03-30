@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef } from 'react';
-import type { SiteAnalysis, AnalysisOptions, ScoringError } from '@jamieblair/wind-site-intelligence-core';
-import { analyseSite } from '@jamieblair/wind-site-intelligence-core';
-import type { Result } from '@jamieblair/wind-site-intelligence-core';
+import type { SiteAnalysis, AnalysisOptions, ScoringError } from '@jamieblair/windforge-core';
+import { analyseSite } from '@jamieblair/windforge-core';
+import type { Result } from '@jamieblair/windforge-core';
 
 interface UseSiteScoreState {
   analysis: SiteAnalysis | null;

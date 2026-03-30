@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import React from 'react';
-import type { SiteAnalysis, FactorScore } from '@jamieblair/wind-site-intelligence-core';
-import type { MonthlyWindHistory } from '@jamieblair/wind-site-intelligence-core';
+import type { SiteAnalysis, FactorScore } from '@jamieblair/windforge-core';
+import type { MonthlyWindHistory } from '@jamieblair/windforge-core';
 import type { WindSiteTheme } from '../styles/theme.js';
 
 export interface ScenarioCompareProps {

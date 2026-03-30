@@ -14,7 +14,7 @@ import type {
   EnergyYieldResult,
   TurbineModel,
   TurbineLayoutEstimate,
-} from '@jamieblair/wind-site-intelligence-core';
+} from '@jamieblair/windforge-core';
 import {
   fetchMonthlyWindHistory,
   fetchDailyWindData,
@@ -30,64 +30,64 @@ import {
   fetchWindData,
   calculateAep,
   estimateTurbineCapacity,
-} from '@jamieblair/wind-site-intelligence-core';
+} from '@jamieblair/windforge-core';
 
 // ─── Quick Scan components ───
 
 const WindSiteScorer = dynamic(
-  () => import('@jamieblair/wind-site-intelligence').then((m) => m.WindSiteScorer),
+  () => import('@jamieblair/windforge').then((m) => m.WindSiteScorer),
   { ssr: false, loading: () => <div style={{ padding: '40px', textAlign: 'center' }}>Loading map...</div> },
 );
 
 const WindTrendChart = dynamic(
-  () => import('@jamieblair/wind-site-intelligence').then((m) => m.WindTrendChart),
+  () => import('@jamieblair/windforge').then((m) => m.WindTrendChart),
   { ssr: false },
 );
 
 const MonthlyBoxPlot = dynamic(
-  () => import('@jamieblair/wind-site-intelligence').then((m) => m.MonthlyBoxPlot),
+  () => import('@jamieblair/windforge').then((m) => m.MonthlyBoxPlot),
   { ssr: false },
 );
 
 const WindSpeedDistribution = dynamic(
-  () => import('@jamieblair/wind-site-intelligence').then((m) => m.WindSpeedDistribution),
+  () => import('@jamieblair/windforge').then((m) => m.WindSpeedDistribution),
   { ssr: false },
 );
 
 const DiurnalProfile = dynamic(
-  () => import('@jamieblair/wind-site-intelligence').then((m) => m.DiurnalProfile),
+  () => import('@jamieblair/windforge').then((m) => m.DiurnalProfile),
   { ssr: false },
 );
 
 const SeasonalHeatmap = dynamic(
-  () => import('@jamieblair/wind-site-intelligence').then((m) => m.SeasonalHeatmap),
+  () => import('@jamieblair/windforge').then((m) => m.SeasonalHeatmap),
   { ssr: false },
 );
 
 // ─── Site Assessment components ───
 
 const SiteBoundaryEditor = dynamic(
-  () => import('@jamieblair/wind-site-intelligence').then((m) => m.SiteBoundaryEditor),
+  () => import('@jamieblair/windforge').then((m) => m.SiteBoundaryEditor),
   { ssr: false },
 );
 
 const ConstraintPanel = dynamic(
-  () => import('@jamieblair/wind-site-intelligence').then((m) => m.ConstraintPanel),
+  () => import('@jamieblair/windforge').then((m) => m.ConstraintPanel),
   { ssr: false },
 );
 
 const ConstraintMap = dynamic(
-  () => import('@jamieblair/wind-site-intelligence').then((m) => m.ConstraintMap),
+  () => import('@jamieblair/windforge').then((m) => m.ConstraintMap),
   { ssr: false },
 );
 
 const TurbineSelector = dynamic(
-  () => import('@jamieblair/wind-site-intelligence').then((m) => m.TurbineSelector),
+  () => import('@jamieblair/windforge').then((m) => m.TurbineSelector),
   { ssr: false },
 );
 
 const EnergyYieldCard = dynamic(
-  () => import('@jamieblair/wind-site-intelligence').then((m) => m.EnergyYieldCard),
+  () => import('@jamieblair/windforge').then((m) => m.EnergyYieldCard),
   { ssr: false },
 );
 
@@ -437,7 +437,7 @@ export default function HomePage() {
         </a>{' '}
         · Open source on{' '}
         <a
-          href="https://github.com/jamieblair/wind-site-intelligence"
+          href="https://github.com/weegienamja/WindForge"
           style={{ color: '#334155', textDecoration: 'underline' }}
         >
           GitHub

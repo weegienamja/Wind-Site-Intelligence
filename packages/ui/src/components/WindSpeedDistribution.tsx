@@ -10,7 +10,7 @@ import {
   Legend,
   ComposedChart,
 } from 'recharts';
-import type { SpeedDistributionResult } from '@jamieblair/wind-site-intelligence-core';
+import type { SpeedDistributionResult } from '@jamieblair/windforge-core';
 import type { WindSiteTheme } from '../styles/theme.js';
 
 export interface WindSpeedDistributionProps {
@@ -29,7 +29,7 @@ export function WindSpeedDistribution({ data, width, height = 300, className, th
   }
   const chartData = useMemo(() => {
     if (!data.bins.length) return [];
-    return data.bins.map((b) => ({
+    return data.bins.map((b: { binStart: number; binEnd: number; frequency: number; weibullFrequency: number }) => ({
       name: `${b.binStart}–${b.binEnd}`,
       frequency: Number((b.frequency * 100).toFixed(1)),
       weibull: Number((b.weibullFrequency * 100).toFixed(1)),

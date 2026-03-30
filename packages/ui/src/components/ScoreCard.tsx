@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import React from 'react';
-import type { SiteAnalysis, FactorScore, Constraint, Warning } from '@jamieblair/wind-site-intelligence-core';
+import type { SiteAnalysis, FactorScore, Constraint, Warning } from '@jamieblair/windforge-core';
 import type { WindSiteTheme } from '../styles/theme.js';
 import { WindRose, DEFAULT_WIND_BANDS } from './WindRose.js';
 import type { WindRoseDirectionData, WindSpeedBand } from './WindRose.js';

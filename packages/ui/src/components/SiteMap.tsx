@@ -3,7 +3,7 @@ import React, { useRef, useState, useCallback, useEffect } from 'react';
 import type { Map as LeafletMap } from 'leaflet';
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, CircleMarker, Tooltip as MapTooltip } from 'react-leaflet';
-import type { LatLng } from '@jamieblair/wind-site-intelligence-core';
+import type { LatLng } from '@jamieblair/windforge-core';
 import type { MapPin } from '../hooks/use-map-interaction.js';
 import type { WindSiteTheme } from '../styles/theme.js';
 

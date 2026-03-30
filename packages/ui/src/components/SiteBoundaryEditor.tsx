@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 import React, { useState, useCallback } from 'react';
 import { MapContainer, TileLayer, Polygon, CircleMarker, Tooltip as MapTooltip, useMapEvents } from 'react-leaflet';
-import type { LatLng, SiteBoundary } from '@jamieblair/wind-site-intelligence-core';
-import { createBoundary, parseBoundaryFromGeoJSON, parseBoundaryFromKML } from '@jamieblair/wind-site-intelligence-core';
+import type { LatLng, SiteBoundary } from '@jamieblair/windforge-core';
+import { createBoundary, parseBoundaryFromGeoJSON, parseBoundaryFromKML } from '@jamieblair/windforge-core';
 import type { WindSiteTheme } from '../styles/theme.js';
 
 export interface SiteBoundaryEditorProps {

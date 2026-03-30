@@ -32,10 +32,10 @@ importers:
 
   packages/demo:
     dependencies:
-      '@jamieblair/wind-site-intelligence':
+      '@jamieblair/windforge':
         specifier: workspace:*
         version: link:../ui
-      '@jamieblair/wind-site-intelligence-core':
+      '@jamieblair/windforge-core':
         specifier: workspace:*
         version: link:../core
       leaflet:
@@ -72,7 +72,7 @@ importers:
 
   packages/ui:
     dependencies:
-      '@jamieblair/wind-site-intelligence-core':
+      '@jamieblair/windforge-core':
         specifier: workspace:*
         version: link:../core
       html2canvas:

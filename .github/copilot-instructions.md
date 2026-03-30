@@ -1,13 +1,13 @@
-# Wind Site Intelligence - Copilot Workspace Prompt
+# WindForge - Copilot Workspace Prompt
 
-You are an AI coding assistant working on **Wind Site Intelligence**, a standalone, embeddable module for scoring and visualising wind turbine site suitability. This is NOT an AI replacement tool. It is a decision-support system that surfaces data and insights so human engineers make better-informed placement decisions.
+You are an AI coding assistant working on **WindForge**, a standalone, embeddable module for scoring and visualising wind turbine site suitability. This is NOT an AI replacement tool. It is a decision-support system that surfaces data and insights so human engineers make better-informed placement decisions.
 
 ---
 
 ## Project Identity
 
-- **Repo name:** `wind-site-intelligence`
-- **npm scope:** `@jamieblair/wind-site-intelligence`
+- **Repo name:** `WindForge`
+- **npm scope:** `@jamieblair/windforge`
 - **Author:** Jamie Blair (jamieblair.co.uk)
 - **Licence:** MIT
 - **Purpose:** Score geographic locations for wind turbine installation by combining meteorological, terrain, infrastructure, and regulatory data into a weighted, human-readable analysis.
@@ -19,7 +19,7 @@ You are an AI coding assistant working on **Wind Site Intelligence**, a standalo
 This project uses a **layered architecture** with a strict separation between the data/scoring core and the UI layer. This is non-negotiable - the package must be consumable both as a drop-in React widget and as a headless SDK.
 
 ```
-wind-site-intelligence/
+windforge/
 ├── packages/
 │   ├── core/                  # Pure TypeScript - no React, no DOM
 │   │   ├── src/
@@ -248,7 +248,7 @@ All components must be exportable and independently usable. They accept data via
 ### 1. Drop-in Widget
 
 ```tsx
-import { WindSiteScorer } from '@jamieblair/wind-site-intelligence';
+import { WindSiteScorer } from '@jamieblair/windforge';
 
 <WindSiteScorer
   defaultCenter={{ lat: 55.86, lng: -4.25 }}
@@ -262,7 +262,7 @@ import { WindSiteScorer } from '@jamieblair/wind-site-intelligence';
 ### 2. Headless SDK
 
 ```typescript
-import { analyseSite, fetchWindData } from '@jamieblair/wind-site-intelligence/core';
+import { analyseSite, fetchWindData } from '@jamieblair/windforge-core';
 
 const windData = await fetchWindData({ lat: 55.86, lng: -4.25 });
 const analysis = await analyseSite({
@@ -803,7 +803,7 @@ Update `<ExportButton />`:
 - Add `prepublishOnly` script that runs tests and build
 - Add a `CHANGELOG.md` at root
 - Add GitHub Actions workflow: test → build → publish on tag push
-- Publish scope: `@jamieblair/wind-site-intelligence-core` and `@jamieblair/wind-site-intelligence-ui`
+- Publish scope: `@jamieblair/windforge-core` and `@jamieblair/windforge`
 
 #### Step 5: Documentation
 

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import React from 'react';
-import type { SiteAssessment } from '@jamieblair/wind-site-intelligence-core';
+import type { SiteAssessment } from '@jamieblair/windforge-core';
 import type { WindSiteTheme } from '../styles/theme.js';
 import { ConstraintPanel } from './ConstraintPanel.js';
 import { ConstraintMap } from './ConstraintMap.js';

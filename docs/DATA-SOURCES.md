@@ -1,12 +1,14 @@
 # Data Sources
 
-All data comes from free, publicly accessible APIs. No paid API keys required.
+All default data comes from free, publicly accessible APIs. No paid API keys required for basic operation. Optional higher-resolution sources (ERA5, CERRA) are available with free registration.
 
-## NASA POWER API
+---
+
+## NASA POWER API (Default)
 
 **Endpoint:** `https://power.larc.nasa.gov/api/temporal/`
 
-Provides historical wind speed and direction data from 1981 to near real-time.
+The primary wind data source. Provides historical wind speed and direction data from 1981 to near real-time at a global scale.
 
 ### Parameters Used
 
@@ -41,16 +43,60 @@ Provides historical wind speed and direction data from 1981 to near real-time.
 
 ---
 
+## ERA5 Reanalysis (Optional)
+
+**API:** Copernicus Climate Data Store (CDS) API
+**Resolution:** 31km global grid
+**Coverage:** 1940 to present (hourly)
+
+ERA5 provides higher-resolution and more recent wind data than NASA POWER. It requires a free CDS API key (registration at [cds.climate.copernicus.eu](https://cds.climate.copernicus.eu)).
+
+### What It Provides
+
+- Wind speed at 100m and 10m height levels
+- Hourly temporal resolution
+- Global coverage at 0.25-degree (~31km) grid spacing
+
+### Usage
+
+Pass your CDS API key to `fetchEra5WindData()`. If no key is provided, WindForge falls back to NASA POWER automatically.
+
+### Rate Limits
+
+- CDS API uses an asynchronous queue system (submit request, poll for completion, download)
+- Requests can take seconds to minutes depending on queue load
+- Cache results for 7 days minimum
+
+---
+
+## CERRA Reanalysis (Optional, Europe Only)
+
+**API:** Copernicus Climate Data Store (CDS) API
+**Resolution:** 5.5km grid (European domain only)
+**Coverage:** 1984 to 2021
+
+CERRA (Copernicus European Regional ReAnalysis) provides significantly higher resolution than both NASA POWER and ERA5, but only covers Europe.
+
+### Domain
+
+Covers Europe roughly from Iceland (72N) to the Mediterranean (20N), and from the mid-Atlantic (-32W) to the Urals (45E). Use `isInCerraDomain(coord)` to check coverage.
+
+### Usage
+
+Pass your CDS API key to `fetchCerraWindData()`. Coordinates outside Europe are automatically rejected with a clear error message.
+
+---
+
 ## Open-Elevation API
 
 **Endpoint:** `https://api.open-elevation.com/api/v1/lookup`
 
-Provides elevation data for any coordinate.
+Provides elevation data for any coordinate worldwide.
 
 ### What It Returns
 
 - Elevation in metres above sea level
-- Slope is calculated from elevation samples at neighboring points
+- Slope is calculated from elevation samples at neighbouring points
 - Roughness class is derived from elevation variance in the surrounding area
 
 ### Limitations
@@ -69,7 +115,7 @@ Provides elevation data for any coordinate.
 
 **Endpoint:** `https://overpass-api.de/api/interpreter`
 
-Queries OpenStreetMap for infrastructure, land use, and road data.
+Queries OpenStreetMap for infrastructure, land use, and road data. This is the most heavily used external API and also the most unreliable, so WindForge has extensive resilience measures around it.
 
 ### Queries Used
 
@@ -101,7 +147,7 @@ Queries OpenStreetMap for infrastructure, land use, and road data.
 - Queries batched where possible to reduce separate requests
 - On timeout: graceful degradation to neutral score (50) with confidence 'low'
 - On total failure: analysis completes with wind and terrain scores only
-- UI clearly indicates which factors have real data and which are degraded
+- The UI clearly shows which factors have real data vs. fallbacks
 
 ---
 
@@ -109,11 +155,11 @@ Queries OpenStreetMap for infrastructure, land use, and road data.
 
 **Endpoint:** `https://nominatim.openstreetmap.org/reverse`
 
-Reverse geocoding to determine country and region for planning feasibility.
+Reverse geocoding to determine country and region for the planning feasibility scorer.
 
 ### Rate Limits
 
-- Strict 1 request per second limit (enforced by Nominatim ToS)
+- Strict 1 request per second limit (enforced by Nominatim Terms of Service)
 - Must include `User-Agent` header identifying the application
 - Results cached for 24 hours
 
@@ -127,12 +173,14 @@ Reverse geocoding to determine country and region for planning feasibility.
 
 ## Data Freshness Summary
 
-| Source | Typical Freshness | Cache TTL |
-|--------|------------------|-----------|
-| NASA POWER climatology | Static (full record average) | 1 hour |
-| NASA POWER monthly | ~2 months behind real-time | 7 days |
-| NASA POWER daily | ~1 month behind | 24 hours |
-| NASA POWER hourly | ~1 month behind | 24 hours |
-| Open-Elevation | Static | 24 hours |
-| Overpass (infrastructure) | Updated by OSM contributors | 24 hours |
-| Nominatim | Updated by OSM contributors | 24 hours |
+| Source | Freshness | Cache TTL | Key Required |
+|--------|----------|-----------|--------------|
+| NASA POWER climatology | Static (full record avg) | 1 hour | No |
+| NASA POWER monthly | ~2 months behind | 7 days | No |
+| NASA POWER daily | ~1 month behind | 24 hours | No |
+| NASA POWER hourly | ~1 month behind | 24 hours | No |
+| ERA5 | ~5 days behind | 7 days | Yes (free) |
+| CERRA | Fixed (ends 2021) | 7 days | Yes (free) |
+| Open-Elevation | Static | 24 hours | No |
+| Overpass | Contributed data | 24 hours | No |
+| Nominatim | Contributed data | 24 hours | No |

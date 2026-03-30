@@ -1,4 +1,4 @@
-// Public API surface for @jamieblair/wind-site-intelligence-core
+// Public API surface for @jamieblair/windforge-core
 
 // ─── Types ───
 
@@ -212,3 +212,218 @@ export type {
 
 export { calculateAep } from './energy/index.js';
 export { estimateTurbineCapacity } from './energy/index.js';
+export { optimiseLayout } from './energy/index.js';
+export type { OptimiserOptions, ConvergenceEntry, OptimisedLayoutResult } from './energy/index.js';
+
+// ─── Wake Modelling ───
+
+export type {
+  WakeModelType,
+  TurbinePosition,
+  WakeDeficit,
+  SectorWakeResult,
+  TurbineWakeResult,
+  WakeLossResult,
+  WakeOptions,
+} from './types/index.js';
+
+export {
+  calculateDirectionalWakeLoss,
+  buildWindRose,
+  layoutToTurbinePositions,
+} from './wake/index.js';
+export {
+  jensenSingleWake,
+  combinedWakeDeficit,
+  computeJensenWakeField,
+  wakeDecayFromRoughness,
+  generateThrustCurveFromPower,
+} from './wake/index.js';
+export {
+  bastankhahSingleWake,
+  bastankhahExpansionFromRoughness,
+  computeBastankhahWakeField,
+} from './wake/index.js';
+
+// ─── Noise Modelling ───
+
+export type {
+  GroundType,
+  NoiseOptions,
+  AttenuationBreakdown,
+  TurbineNoiseContribution,
+  NoiseResult,
+  ElevationProfilePoint,
+  ElevationProfile,
+  BackgroundNoise,
+  EtsuOptions,
+  ReceptorAssessment,
+  EtsuAssessment,
+  NoiseContourCell,
+  NoiseContourGrid,
+  OctaveBandSpl,
+} from './types/index.js';
+
+export {
+  calculateNoiseAtReceptor,
+  calculateNoiseSingleTurbine,
+  logarithmicSum,
+  geometricDivergence,
+  atmosphericAbsorption,
+  groundEffect,
+  barrierAttenuation,
+  slantDistance,
+  assessNoiseCompliance,
+  daytimeNoiseLimit,
+  nightTimeNoiseLimit,
+  computeNoiseContours,
+} from './noise/index.js';
+
+export {
+  fetchElevationProfile,
+  createElevationProfile,
+  interpolateCoordinates,
+} from './utils/elevation-profile.js';
+
+// ─── Shadow Flicker ───
+
+export type {
+  SolarPosition,
+  ReceptorFlicker,
+  ShadowFlickerResult,
+  ShadowComplianceOptions,
+  ShadowComplianceAssessment,
+  ShadowCalendarEntry,
+  ShadowCalendar,
+} from './types/index.js';
+
+export {
+  calculateSolarPosition,
+  solarDeclination,
+  dateToJulianDay,
+  dayOfYear,
+  calculateShadowFlicker,
+  assessShadowCompliance,
+  isFlickerOccurring,
+  bearing,
+  angleDifference,
+  generateShadowCalendar,
+  summariseShadowCalendar,
+} from './shadow/index.js';
+
+// ─── Terrain Flow Modelling ───
+
+export type {
+  ElevationGridPoint,
+  ElevationGrid,
+  SpeedUpPoint,
+  SpeedUpGrid,
+  RixResult,
+} from './types/index.js';
+
+export {
+  fetchElevationGrid,
+  generateGridCoordinates,
+  createElevationGrid,
+  clearElevationGridCache,
+  computeTerrainSpeedUp,
+  calculateRix,
+  calculateRixGrid,
+} from './terrain/index.js';
+
+// ─── Wind Assessment (Turbulence & Extreme Wind) ───
+
+export type {
+  TurbulenceBin,
+  IecTurbulenceClass,
+  TurbulenceResult,
+  ExtremeWindResult,
+} from './types/index.js';
+
+export {
+  estimateTurbulenceIntensity,
+  classifyTurbulence,
+  estimateExtremeWind,
+  fitGumbel,
+  gumbelQuantile,
+} from './analysis/index.js';
+
+// ─── Financial Model ───
+
+export type {
+  FinancialParams,
+  LcoeResult,
+  IrrResult,
+  PaybackResult,
+  YearlyCashflow,
+  CashflowProjection,
+  ParameterVariation,
+  SensitivityItem,
+  SensitivityResult,
+} from './types/index.js';
+
+export {
+  calculateLcoe,
+  calculateIrr,
+  calculatePayback,
+  generateCashflow,
+  resolveParams,
+  DEFAULT_FINANCIAL_PARAMS,
+  runSensitivityAnalysis,
+  compareScenarios,
+  DEFAULT_VARIATIONS,
+} from './financial/index.js';
+
+// ─── On-Site Data Integration (MCP) ───
+
+export type {
+  MetMastRecord,
+  MetMastColumnConfig,
+  FlaggedRecord,
+  DataGap,
+  MetMastDataset,
+  DataQualityReport,
+  McpResult,
+} from './types/index.js';
+
+export { parseMetMastCSV } from './datasources/index.js';
+
+export { performMcpAnalysis } from './analysis/index.js';
+
+export { assessDataQuality } from './analysis/index.js';
+
+// ─── Visual Impact (Viewshed) ───
+
+export type { ViewshedCell, ViewshedResult } from './visual/index.js';
+
+export { computeViewshed } from './visual/index.js';
+
+// ─── Cumulative Impact ───
+
+export type { ExistingTurbine, CumulativeImpactResult } from './cumulative/index.js';
+
+export { assessCumulativeImpact } from './cumulative/index.js';
+
+// ─── IEC Reporting ───
+
+export type { IecSiteReport } from './reporting/index.js';
+
+export { generateIecSiteReport } from './reporting/index.js';
+
+// ─── ERA5 / CERRA Data Sources ───
+
+export { fetchEra5WindData, uvToSpeedDirection, validateEra5ApiKey, clearEra5Cache } from './datasources/index.js';
+export type { Era5Options } from './datasources/index.js';
+
+export { fetchCerraWindData, isInCerraDomain, clearCerraCache } from './datasources/index.js';
+export type { CerraOptions } from './datasources/index.js';
+
+// ─── Spatial Cache ───
+
+export { createSpatialCache, tileKey } from './cache/index.js';
+export type { SpatialCache, SpatialDataType, CacheStats } from './cache/index.js';
+
+// ─── Data Validation ───
+
+export { validateWindData, validateElevationData, validateCoordinateArray } from './validation/index.js';
+export type { ValidationResult } from './validation/index.js';

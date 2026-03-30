@@ -1,7 +1,7 @@
 {
-  "name": "wind-site-intelligence",
+  "name": "windforge",
   "private": true,
-  "description": "Score and visualise wind turbine site suitability",
+  "description": "Professional wind energy site assessment platform",
   "author": "Jamie Blair <jamie@jamieblair.co.uk>",
   "license": "MIT",
   "packageManager": "pnpm@9.15.4",

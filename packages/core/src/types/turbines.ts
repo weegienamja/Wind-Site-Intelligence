@@ -10,6 +10,11 @@ export interface ThrustCurvePoint {
   thrustCoefficient: number;
 }
 
+export interface OctaveBandSpl {
+  frequencyHz: number;
+  levelDba: number;
+}
+
 export interface TurbineModel {
   id: string;
   manufacturer: string;
@@ -22,6 +27,10 @@ export interface TurbineModel {
   cutOutSpeedMs: number;
   powerCurve: PowerCurvePoint[];
   thrustCurve?: ThrustCurvePoint[];
+  /** Overall A-weighted sound power level at rated wind speed (dBA) */
+  soundPowerLevelDba?: number;
+  /** Frequency-dependent sound power levels (octave bands) */
+  octaveBandSpl?: OctaveBandSpl[];
 }
 
 export interface TurbineLayoutEstimate {

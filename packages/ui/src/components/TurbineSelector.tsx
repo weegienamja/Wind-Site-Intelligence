@@ -2,8 +2,8 @@ import type { ReactNode } from 'react';
 import React from 'react';
 import type {
   TurbineModel,
-} from '@jamieblair/wind-site-intelligence-core';
-import { getAllTurbines } from '@jamieblair/wind-site-intelligence-core';
+} from '@jamieblair/windforge-core';
+import { getAllTurbines } from '@jamieblair/windforge-core';
 import type { WindSiteTheme } from '../styles/theme.js';
 
 export interface TurbineSelectorProps {

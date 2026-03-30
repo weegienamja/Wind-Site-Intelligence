@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: [
-    '@jamieblair/wind-site-intelligence',
-    '@jamieblair/wind-site-intelligence-core',
+    '@jamieblair/windforge',
+    '@jamieblair/windforge-core',
   ],
 };
 

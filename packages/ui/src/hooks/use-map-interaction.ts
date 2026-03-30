@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import type { LatLng } from '@jamieblair/wind-site-intelligence-core';
+import type { LatLng } from '@jamieblair/windforge-core';
 
 export interface MapPin {
   coordinate: LatLng;

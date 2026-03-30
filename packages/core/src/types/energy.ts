@@ -68,6 +68,12 @@ export interface AepOptions {
   elevationM?: number;
   windShearAlpha?: number;
   losses?: Partial<LossOverrides>;
+  /** Wake model to use: 'jensen', 'bastankhah', or 'parametric' (flat %). Default: 'parametric'. */
+  wakeModel?: 'jensen' | 'bastankhah' | 'parametric';
+  /** Turbine layout positions. Required for directional wake modelling. */
+  layoutPositions?: Array<{ lat: number; lng: number }>;
+  /** Terrain roughness class (0-3) for wake decay constant derivation. */
+  roughnessClass?: number;
 }
 
 export interface LossOverrides {

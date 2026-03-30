@@ -1,7 +1,7 @@
 {
-  "name": "@jamieblair/wind-site-intelligence-core",
-  "version": "0.1.0",
-  "description": "Core scoring engine for wind turbine site suitability analysis",
+  "name": "@jamieblair/windforge-core",
+  "version": "0.3.0",
+  "description": "Core scoring and analysis engine for wind energy site assessment",
   "author": "Jamie Blair <jamie@jamieblair.co.uk>",
   "license": "MIT",
   "type": "module",

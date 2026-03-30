@@ -68,6 +68,7 @@ export type {
   ThrustCurvePoint,
   TurbineModel,
   TurbineLayoutEstimate,
+  OctaveBandSpl,
 } from './turbines.js';
 
 // --- Energy types ---
@@ -80,3 +81,83 @@ export type {
   AepOptions,
   LossOverrides,
 } from './energy.js';
+
+// --- Wake types ---
+export type {
+  WakeModelType,
+  TurbinePosition,
+  WakeDeficit,
+  SectorWakeResult,
+  TurbineWakeResult,
+  WakeLossResult,
+  WakeOptions,
+} from './wake.js';
+
+// --- Noise types ---
+export type {
+  GroundType,
+  NoiseOptions,
+  AttenuationBreakdown,
+  TurbineNoiseContribution,
+  NoiseResult,
+  ElevationProfilePoint,
+  ElevationProfile,
+  BackgroundNoise,
+  EtsuOptions,
+  ReceptorAssessment,
+  EtsuAssessment,
+  NoiseContourCell,
+  NoiseContourGrid,
+} from './noise.js';
+
+// --- Shadow types ---
+export type {
+  SolarPosition,
+  ReceptorFlicker,
+  ShadowFlickerResult,
+  ShadowComplianceOptions,
+  ShadowComplianceAssessment,
+  ShadowCalendarEntry,
+  ShadowCalendar,
+} from './shadow.js';
+
+// --- Terrain flow types ---
+export type {
+  ElevationGridPoint,
+  ElevationGrid,
+  SpeedUpPoint,
+  SpeedUpGrid,
+  RixResult,
+} from './terrain.js';
+
+// --- Wind assessment types ---
+export type {
+  TurbulenceBin,
+  IecTurbulenceClass,
+  TurbulenceResult,
+  ExtremeWindResult,
+} from './wind-assessment.js';
+
+// --- Financial types ---
+export type {
+  FinancialParams,
+  LcoeResult,
+  IrrResult,
+  PaybackResult,
+  YearlyCashflow,
+  CashflowProjection,
+  ParameterVariation,
+  SensitivityItem,
+  SensitivityResult,
+} from './financial.js';
+
+// --- Met mast / on-site data types ---
+export type {
+  MetMastRecord,
+  MetMastColumnConfig,
+  FlaggedRecord,
+  DataGap,
+  MetMastDataset,
+  DataQualityReport,
+  McpResult,
+} from './met-mast.js';

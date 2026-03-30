@@ -10,7 +10,7 @@ import {
   Legend,
   Line,
 } from 'recharts';
-import type { DiurnalPoint, DiurnalProfileResult } from '@jamieblair/wind-site-intelligence-core';
+import type { DiurnalPoint, DiurnalProfileResult } from '@jamieblair/windforge-core';
 import type { WindSiteTheme } from '../styles/theme.js';
 
 export interface DiurnalProfileProps {

@@ -13,6 +13,10 @@ import type { ScoringError } from '../types/errors.js';
 import { ScoringErrorCode, scoringError } from '../types/errors.js';
 import type { Result } from '../types/result.js';
 import { ok, err } from '../types/result.js';
+import {
+  calculateDirectionalWakeLoss,
+  layoutToTurbinePositions,
+} from '../wake/wake-loss-calculator.js';
 import { extrapolateWindSpeed } from '../utils/wind-shear.js';
 
 const HOURS_PER_YEAR = 8760;
@@ -78,8 +82,32 @@ export function calculateAep(
   const densityFactor = airDensityKgM3 / 1.225;
   const densityCorrectedAepMwh = grossAepPerTurbineMwh * densityFactor;
 
-  // 5. Build loss stack
+  // 5. Build loss stack with optional directional wake model
   const lossOverrides = { ...DEFAULT_LOSSES, ...options.losses };
+
+  // Determine wake loss: directional model or parametric flat %
+  const wakeModel = options.wakeModel ?? 'parametric';
+  let directionalWakeLossPct: number | undefined;
+
+  if (wakeModel !== 'parametric' && options.layoutPositions && options.layoutPositions.length > 1) {
+    const turbinePositions = layoutToTurbinePositions(
+      options.layoutPositions,
+      turbine,
+      hubHeightM,
+    );
+    const wakeLossResult = calculateDirectionalWakeLoss(
+      turbinePositions,
+      turbine,
+      windData,
+      wakeModel,
+      {
+        roughnessClass: options.roughnessClass,
+      },
+    );
+    directionalWakeLossPct = wakeLossResult.wakeLossPercent;
+    lossOverrides.wakeLossPct = directionalWakeLossPct;
+  }
+
   const losses = buildLossStack(lossOverrides, turbineCount);
 
   // 6. Net AEP
@@ -128,6 +156,10 @@ export function calculateAep(
     .filter(Boolean)
     .join(' ');
 
+  const wakeMethodDesc = directionalWakeLossPct !== undefined
+    ? `Directional ${wakeModel === 'bastankhah' ? 'Bastankhah Gaussian' : 'Jensen/Park'} wake model (${directionalWakeLossPct.toFixed(1)}% loss)`
+    : 'Parametric wake loss assumption';
+
   const assumptions: AepAssumptions = {
     windDataYears: dataYears,
     referenceHeightM: refHeightM,
@@ -135,7 +167,7 @@ export function calculateAep(
     airDensityKgM3,
     weibullK: k,
     weibullC: c,
-    lossAssumptions: 'Industry-standard conservative assumptions',
+    lossAssumptions: wakeMethodDesc,
     uncertaintyMethod: 'Interannual wind speed variability (COV-based)',
   };
 
