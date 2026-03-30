@@ -1,4 +1,4 @@
-# Wind Site Intelligence — Copilot Workspace Prompt
+# Wind Site Intelligence - Copilot Workspace Prompt
 
 You are an AI coding assistant working on **Wind Site Intelligence**, a standalone, embeddable module for scoring and visualising wind turbine site suitability. This is NOT an AI replacement tool. It is a decision-support system that surfaces data and insights so human engineers make better-informed placement decisions.
 
@@ -16,12 +16,12 @@ You are an AI coding assistant working on **Wind Site Intelligence**, a standalo
 
 ## Architecture
 
-This project uses a **layered architecture** with a strict separation between the data/scoring core and the UI layer. This is non-negotiable — the package must be consumable both as a drop-in React widget and as a headless SDK.
+This project uses a **layered architecture** with a strict separation between the data/scoring core and the UI layer. This is non-negotiable - the package must be consumable both as a drop-in React widget and as a headless SDK.
 
 ```
 wind-site-intelligence/
 ├── packages/
-│   ├── core/                  # Pure TypeScript — no React, no DOM
+│   ├── core/                  # Pure TypeScript - no React, no DOM
 │   │   ├── src/
 │   │   │   ├── scoring/       # Scoring engine and weighting logic
 │   │   │   ├── datasources/   # API clients for wind, terrain, grid data
@@ -92,7 +92,7 @@ All data comes from **free, publicly accessible APIs**. Do not introduce any dat
 - Each data source has its own client module with a consistent interface
 - All clients must implement retry logic with exponential backoff
 - Cache responses locally (in-memory or IndexedDB in browser context) to avoid repeat calls
-- Never call an external API from the UI layer directly — always go through core
+- Never call an external API from the UI layer directly - always go through core
 
 ### NASA POWER Extended Parameters
 
@@ -125,7 +125,7 @@ The NASA POWER API provides wind data at multiple heights and temporal resolutio
 https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=WS2M,WS10M,WS50M,WD10M,WD50M&community=RE&longitude={lng}&latitude={lat}&start=1981&end=2025&format=JSON
 ```
 
-**Rate limiting:** the API throttles repeated rapid requests. Space sequential calls by at least 1 second. Cache aggressively — historical data does not change.
+**Rate limiting:** the API throttles repeated rapid requests. Space sequential calls by at least 1 second. Cache aggressively - historical data does not change.
 
 **Extrapolation update:** when `WS50M` data is available, use it as the reference height instead of `WS2M`. The extrapolation formula remains the same but `h_ref` becomes 50 and `v_ref` uses the 50m measurement. This produces more accurate hub-height estimates. Fall back to `WS2M` only if 50m data is unavailable for a given location/period.
 
@@ -164,7 +164,7 @@ Where:
 
 **Implementation rules:**
 - `hubHeightM` must be a configurable parameter on `analyseSite()` and on the `<WindSiteScorer />` component (default: 80)
-- `alpha` should be derived from the terrain roughness class already calculated by the terrain scorer — do not hardcode it
+- `alpha` should be derived from the terrain roughness class already calculated by the terrain scorer - do not hardcode it
 - The `FactorScore.detail` string for wind resource must show both the raw 2m speed and the extrapolated hub-height speed, so the user sees the full picture
 - The CLI should display both values (e.g. "3.6 m/s at 2m, estimated 7.1 m/s at 80m hub height")
 - Add a `windShearAlpha` field to `AnalysisMetadata` so consumers know what exponent was used
@@ -237,7 +237,7 @@ All components must be exportable and independently usable. They accept data via
 
 - Every component must accept a `className` prop for external styling
 - Every component must accept a `theme` prop that overrides CSS custom properties
-- No component may call an external API directly — all data flows through hooks that call core
+- No component may call an external API directly - all data flows through hooks that call core
 - All components must be accessible (proper ARIA labels, keyboard navigation)
 - Loading and error states are mandatory, not optional
 
@@ -313,11 +313,11 @@ Build in this order. Each phase must be testable and demonstrable before moving 
 Phase 1 and 2 are complete. The core scoring engine works with wind shear extrapolation, terrain analysis, and a Leaflet map UI with click-to-analyse. Four scoring factors are still placeholders at a neutral 50: Grid Proximity, Land Use Compatibility, Planning Feasibility, and Access Logistics. This phase replaces those placeholders with real data.
 
 **Current state of the codebase:**
-- `packages/core/src/datasources/` contains `nasa-power.ts` and `open-elevation.ts` — follow the same patterns for new data source clients
-- `packages/core/src/scoring/` contains `wind-resource.ts` and `terrain.ts` — follow the same patterns for new scorers
-- `packages/core/src/scoring/engine.ts` calls scorers in parallel and assembles `SiteAnalysis` — new scorers plug into this
-- 73 tests passing across core — maintain or exceed this count
-- All data source clients use retry with exponential backoff and in-memory caching — new clients must do the same
+- `packages/core/src/datasources/` contains `nasa-power.ts` and `open-elevation.ts` - follow the same patterns for new data source clients
+- `packages/core/src/scoring/` contains `wind-resource.ts` and `terrain.ts` - follow the same patterns for new scorers
+- `packages/core/src/scoring/engine.ts` calls scorers in parallel and assembles `SiteAnalysis` - new scorers plug into this
+- 73 tests passing across core - maintain or exceed this count
+- All data source clients use retry with exponential backoff and in-memory caching - new clients must do the same
 
 #### Step 1: Grid Proximity Scorer
 
@@ -586,7 +586,7 @@ interface HourlyWindData {
 
 Create `packages/core/src/analysis/wind-analysis.ts`:
 
-This module takes raw historical data and computes derived statistics for charting. It does NOT render charts — it produces chart-ready data structures.
+This module takes raw historical data and computes derived statistics for charting. It does NOT render charts - it produces chart-ready data structures.
 
 ```typescript
 // Long-term trend analysis
@@ -687,7 +687,7 @@ interface WindSpeedDistributionData {
 }
 ```
 
-All analysis functions must be **pure functions** — take data in, return results out, no side effects, no API calls. This makes them trivially testable.
+All analysis functions must be **pure functions** - take data in, return results out, no side effects, no API calls. This makes them trivially testable.
 
 #### Step 3: Chart Components
 
@@ -734,7 +734,7 @@ Create in `packages/ui/src/components/`:
 - When a site is analysed, automatically fetch the full monthly history (1981-present)
 - Render `<WindTrendChart />`, `<SeasonalHeatmap />`, `<MonthlyBoxPlot />`, and `<WindSpeedDistribution />` using the monthly data
 - Add a "Detailed Analysis" button that fetches daily data for the last 5 years and hourly data for the last year, then renders `<DiurnalProfile />` and updates the distribution chart with daily granularity
-- Charts should load progressively — show the ones that have data as soon as it arrives, don't wait for all fetches to complete
+- Charts should load progressively - show the ones that have data as soon as it arrives, don't wait for all fetches to complete
 - Each chart must have a loading skeleton while its data is being fetched
 
 #### Step 5: Update Scoring Engine to Use 50m Data

@@ -44,7 +44,7 @@ export function scoreLandUse(
   // Start from base score
   let score = 70;
 
-  // Deduplicate soft constraints by type — count occurrences but only penalise once per type
+  // Deduplicate soft constraints by type - count occurrences but only penalise once per type
   const softByType = new Map<string, { count: number; nearest: number; description: string }>();
   for (const sc of landUse.softConstraints) {
     const existing = softByType.get(sc.type);
