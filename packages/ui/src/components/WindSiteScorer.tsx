@@ -55,10 +55,10 @@ export function WindSiteScorer({
 
   // Sync pin loading state with analysis loading
   useEffect(() => {
-    if (!loading && pin) {
+    if (!loading) {
       setLoading(false);
     }
-  }, [loading, pin, setLoading]);
+  }, [loading, setLoading]);
 
   const handleMapClick = useCallback(
     (coord: LatLng) => {
